@@ -1,0 +1,18 @@
+1️⃣ User asks a question via FastAPI (/chat) or Gradio UI (http://127.0.0.1:7860/).
+2️⃣ FAISS retrieves the best-matching question from the database.
+3️⃣ Llama 2 generates the final response using the retrieved answer & query.
+4️⃣ If the answer is not found, Llama 2 responds: "I don't know. Can you provide more details?".
+5️⃣ When new Q&A pairs are added, the /train API updates FAISS.
+
+📌 Explanation of Each File & Folder
+Path	                                  Purpose
+/data/	                          Stores database (qa_system.db) and FAISS index (faiss_index.bin).
+/models/model_handler.py	      Loads Llama 2, retrieves FAISS results, and generates responses.
+/database/db_handler.py        	  Manages SQLite database, inserts & retrieves Q&A pairs.
+/routes/chat.py	                  FastAPI route to retrieve answers using FAISS & Llama 2.
+/routes/train.py	              FastAPI route to train FAISS with new Q&A pairs.
+main.py	                          FastAPI entry point, initializes Gradio UI & API routes.
+requirements.txt	              List of Python dependencies needed for the project.
+README.md	                      Documentation on installation & usage instructions.
+
+http://127.0.0.1:8000/qa/add_qa/?question=Who invented Python?&answer=Guido van Rossum
