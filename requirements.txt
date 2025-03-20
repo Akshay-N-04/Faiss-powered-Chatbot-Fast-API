@@ -5,4 +5,4 @@ numpy
 sentence-transformers
 # sqlite3
 gradio
-llama-cpp-python
+llama-cpp-python -> llama-2-7b-chat.Q4_K_M.gguf
